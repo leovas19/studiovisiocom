@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: studiovisiocom
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn Exemple.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: Exemple.settings
+
