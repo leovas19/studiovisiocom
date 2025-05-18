@@ -132,3 +132,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'studiovisiocom@gmail.com'
 EMAIL_HOST_PASSWORD = 'ta_clé_générée_Gmail_ici'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+CSRF_TRUSTED_ORIGINS = ['https://studiovisiocom-production.up.railway.app']
+
