@@ -19,7 +19,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 ALLOWED_HOSTS = ['studiovisiocom-production.up.railway.app', '127.0.0.1', 'localhost']
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Quick-start development settings - unsuitable for production
@@ -30,8 +29,6 @@ SECRET_KEY = "django-insecure-3)&8!#m)@r#k8gup3(d8h@f@%5z2^k^i6#p52^oa4fthfsi$zj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
