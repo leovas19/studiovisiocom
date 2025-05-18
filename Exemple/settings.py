@@ -18,7 +18,7 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = ['studiovisiocom-production.up.railway.app']
+ALLOWED_HOSTS = ['studiovisiocom-production.up.railway.app', '127.0.0.1', 'localhost']
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
