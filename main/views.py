@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from django.conf import settings
+from .models import Avis
+from .forms import AvisForm
+from django.contrib import messages
+
 
 def index(request):
     return render(request, 'main/index.html')
@@ -62,4 +66,29 @@ def recapitulatif_contact(request):
         'details': request.session.get('details'),
     }
     return render(request, "main/recapitulatif.html", context)
+
+def avis_view(request):
+    note_filter = request.GET.get('note')
+    avis_liste = Avis.objects.all().order_by('-date')
+    if note_filter:
+        avis_liste = avis_liste.filter(note=note_filter)
+
+    if request.method == 'POST':
+        form = AvisForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Merci pour votre avis !")
+            return redirect('avis')
+    else:
+        form = AvisForm()
+
+    return render(request, 'main/avis.html', {
+        'form': form,
+        'avis_liste': avis_liste,
+        'note_filter': note_filter,
+    })
+
+def home_view(request):
+    derniers_avis = Avis.objects.all().order_by('-date')[:3]
+    return render(request, 'main/home.html', {'derniers_avis': derniers_avis})
 

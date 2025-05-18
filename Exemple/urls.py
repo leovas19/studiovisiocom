@@ -31,7 +31,8 @@ urlpatterns = [
     path('services/flyers-carteVisite/', views.flyers_carteVisite, name='flyers_carteVisite'),
     path('services/site-vitrine/', views.service_site, name='service_site'),
     path('services/creation-affiches/', views.creation_affiche, name='creation_affiche'),
-path('recapitulatif/', views.recapitulatif_contact, name='recapitulatif_contact'),
+    path('recapitulatif/', views.recapitulatif_contact, name='recapitulatif_contact'),
+    path('avis/', views.avis_view, name='avis'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
