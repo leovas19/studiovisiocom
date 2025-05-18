@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 
 def index(request):
@@ -34,7 +34,15 @@ def contact(request):
         message = f"Nom : {nom}\nEmail : {email}\nService souhaité : {service}\n\nDétails :\n{details}"
         destinataire = [settings.EMAIL_HOST_USER]
 
-        send_mail(sujet, message, settings.EMAIL_HOST_USER, destinataire)
+        email_message = EmailMessage(
+            subject=sujet,
+            body=message,
+            from_email=settings.EMAIL_HOST_USER,
+            to=destinataire
+        )
+        email_message.content_subtype = "plain"
+        email_message.encoding = "utf-8"  # ✅ Ajout pour corriger le bug
+        email_message.send()
 
         return render(request, "main/contact.html", {"message_envoye": True})
 
