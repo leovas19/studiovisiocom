@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from django.conf import settings
 
@@ -41,9 +41,25 @@ def contact(request):
             to=destinataire
         )
         email_message.content_subtype = "plain"
-        email_message.encoding = "utf-8"  # ✅ Ajout pour corriger le bug
+        email_message.encoding = "utf-8"
         email_message.send()
 
-        return render(request, "main/contact.html", {"message_envoye": True})
+        # 👉 Enregistre les infos dans la session pour les afficher ensuite
+        request.session['nom'] = nom
+        request.session['email'] = email
+        request.session['service'] = service
+        request.session['details'] = details
+
+        return redirect("recapitulatif_contact")
 
     return render(request, "main/contact.html")
+
+def recapitulatif_contact(request):
+    context = {
+        'nom': request.session.get('nom'),
+        'email': request.session.get('email'),
+        'service': request.session.get('service'),
+        'details': request.session.get('details'),
+    }
+    return render(request, "main/recapitulatif.html", context)
+
