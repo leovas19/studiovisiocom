@@ -33,6 +33,13 @@ urlpatterns = [
     path('services/creation-affiches/', views.creation_affiche, name='creation_affiche'),
     path('recapitulatif/', views.recapitulatif_contact, name='recapitulatif_contact'),
     path('avis/', views.avis_view, name='avis'),
+    path('services/solutions-ia/', views.solutions_ia, name='solutions_ia'),
+    path('services/marketing/', views.marketing_digital, name='marketing_digital'),
+    path('services/design-graphique/', views.design_graphique, name='design_graphique'),
+    path('portfolio/', views.portfolio, name='portfolio'),
+    path('portfolio/la-table-antoine/', views.projet_la_table_antoine, name='projet_la_table_antoine'),
+    path('portfolio/axel-designs/', views.axel_designs, name='axel_designs'),
+    path('portfolio/elegance-spa/', views.elegance_spa, name='elegance_spa'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -6,9 +6,6 @@ from .forms import AvisForm
 from django.contrib import messages
 
 
-def index(request):
-    return render(request, 'main/index.html')
-
 def produits(request):
     return render(request, 'main/produits.html')
 
@@ -91,4 +88,30 @@ def avis_view(request):
 def home_view(request):
     derniers_avis = Avis.objects.all().order_by('-date')[:3]
     return render(request, 'main/home.html', {'derniers_avis': derniers_avis})
+
+def solutions_ia(request):
+    return render(request, 'main/solutions-ia.html')
+
+def marketing_digital(request):
+    return render(request, 'main/marketing-digital.html')
+
+def design_graphique(request):
+    return render(request, 'main/design-graphique.html')
+
+def portfolio(request):
+    return render(request, 'main/portfolio.html')
+
+def projet_la_table_antoine(request):
+    return render(request, 'main/projets/la-table-antoine.html')
+
+def axel_designs(request):
+    return render(request, 'main/axel-designs.html')
+
+def elegance_spa(request):
+    return render(request, 'main/elegance-spa.html')
+
+
+def index(request):
+    derniers_avis = Avis.objects.order_by('-date')[:3]  # ou filtré si nécessaire
+    return render(request, 'main/index.html', {'derniers_avis': derniers_avis})
 
