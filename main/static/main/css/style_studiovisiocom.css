@@ -1,0 +1,59 @@
+
+:root {
+  --fond-noir: #1C1C1C;
+  --noir: #000000;
+  --bleu-electrique: #007CFA;
+  --gris-clair: #CCCCCC;
+  --blanc-casse: #F5F5F5;
+}
+
+body {
+  background-color: var(--fond-noir);
+  color: var(--gris-clair);
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  color: var(--noir);
+}
+
+a, .text-accent, .btn-primary {
+  color: var(--bleu-electrique);
+}
+
+.btn-primary {
+  background-color: var(--bleu-electrique);
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #005fcc;
+}
+
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: scale(1.10);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background-color: var(--noir);
+  color: var(--gris-clair);
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  color: var(--bleu-electrique) !important;
+}

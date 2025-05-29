@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4 text-center">📋 Suivi de votre projet</h2>
+
+    {% if projets %}
+        {% for projet in projets %}
+        <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title text-primary">{{ projet.nom }}</h4>
+                <p class="text-muted">Statut actuel : <strong>{{ projet.statut }}</strong></p>
+
+                <!-- Timeline visuelle -->
+                <div class="progress mb-3" style="height: 20px;">
+                    {% if projet.statut == "En attente" %}
+                        <div class="progress-bar bg-secondary" style="width: 10%;">En attente</div>
+                    {% elif projet.statut == "En cours" %}
+                        <div class="progress-bar bg-info" style="width: 30%;">En cours</div>
+                    {% elif projet.statut == "En design" %}
+                        <div class="progress-bar bg-warning text-dark" style="width: 50%;">Design</div>
+                    {% elif projet.statut == "Développement" %}
+                        <div class="progress-bar bg-primary" style="width: 80%;">Développement</div>
+                    {% elif projet.statut == "Terminé" %}
+                        <div class="progress-bar bg-success" style="width: 100%;">Terminé</div>
+                    {% endif %}
+                </div>
+
+                <p class="small text-muted">Projet créé le {{ projet.date_creation|date:"d/m/Y" }}.</p>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted">Aucun projet associé à votre compte pour le moment.</p>
+    {% endif %}
+</div>
+{% endblock %}
