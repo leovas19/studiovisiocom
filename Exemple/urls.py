@@ -8,8 +8,8 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
-    path('produits/', views.produits, name='produits'),
+    path('', views.intro_view, name='intro'),     # Page d'intro affichée à /
+    path('accueil/', views.index, name='index'),  # ou autre chemin selon ta structure    path('produits/', views.produits, name='produits'),
     path('contact/', views.contact, name='contact'),
     path('services/', views.services, name='services'),
     path('exemple/', views.exemple, name='exemple'),

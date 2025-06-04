@@ -162,6 +162,9 @@ def avis_view(request):
 #        PAGES PUBLIQUES
 # ==========================
 
+def intro_view(request):
+    return render(request, 'main/intro.html')
+
 def index(request):
     derniers_avis = Avis.objects.order_by('-date')[:3]
     return render(request, 'main/index.html', {'derniers_avis': derniers_avis})
